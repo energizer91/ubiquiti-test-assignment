@@ -1,17 +1,13 @@
 import React from 'react';
 import { Item } from '../../types';
-import { getImageURL } from '../../utils';
 import styles from './Grid.module.css';
-import { useNavigate } from 'react-router-dom';
 import { FixedSizeGrid as Grid, GridChildComponentProps } from 'react-window';
 
 interface TableProps {
   items: Item[];
 }
 
-const GridElement = ({ data, rowIndex, columnIndex, style }: GridChildComponentProps<Item[]>) => {
-  const navigate = useNavigate();
-
+const GridElement = ({ style }: GridChildComponentProps<Item[]>) => {
   return (
     <div style={style} className={styles.element}>
       <img src="" alt="" />
