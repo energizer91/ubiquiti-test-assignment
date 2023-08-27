@@ -8,8 +8,7 @@ import { DevicesContext } from '../../context/devicesContext';
 
 export default function MainView() {
   const [filters, setFilters] = React.useState<FilterLine[]>([]);
-  const [viewMode, setViewMode] = React.useState<ViewMode>(ViewMode.TABLE);
-  const { loading, data, error } = useContext(DevicesContext);
+  const { loading, data, error, viewMode } = useContext(DevicesContext);
   const filteredItems = React.useMemo<Item[]>(() => {
     if (!data) {
       return [];
@@ -35,8 +34,6 @@ export default function MainView() {
       <ToolBar
         onChangeFilter={setFilters}
         filteredLength={filteredItems.length}
-        viewMode={viewMode}
-        onChangeViewMode={setViewMode}
       />
       {viewMode === ViewMode.TABLE && <Table items={filteredItems} />}
       {viewMode === ViewMode.GRID && <Grid items={filteredItems} />}

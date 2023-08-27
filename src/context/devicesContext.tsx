@@ -1,18 +1,22 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { FilterLine, Item } from '../types';
+import { FilterLine, Item, ViewMode } from '../types';
 
 export interface FetchItemsResult {
   loading: boolean;
   error: TypeError | undefined;
   data: Item[];
   filters: FilterLine[];
+  viewMode: ViewMode;
+  setViewMode: (mode: ViewMode) => void;
 }
 
 const defaultContext: FetchItemsResult = {
   loading: false,
   error: undefined,
   data: [],
-  filters: []
+  filters: [],
+  viewMode: ViewMode.TABLE,
+  setViewMode: () => void 0,
 };
 
 interface DevicesData {
@@ -30,6 +34,7 @@ export default function DevicesWrapper({ children }: DevicesWrapperProps) {
   const [error, setError] = useState<TypeError>();
   const [data, setData] = useState<Item[]>([]);
   const [filters, setFilters] = useState<FilterLine[]>([]);
+  const [viewMode, setViewMode] = React.useState<ViewMode>(ViewMode.TABLE);
 
   useEffect(() => {
     if (loading) return;
@@ -39,7 +44,7 @@ export default function DevicesWrapper({ children }: DevicesWrapperProps) {
     fetch(ITEMS_URL)
       .then((r) => r.json())
       .then((d: DevicesData) => {
-        const {devices} = d;
+        const { devices } = d;
         const hash: Record<string, boolean> = {};
         const result: FilterLine[] = [];
 
@@ -66,6 +71,8 @@ export default function DevicesWrapper({ children }: DevicesWrapperProps) {
         data,
         error,
         filters,
+        viewMode,
+        setViewMode,
       }}
     >
       {children}
