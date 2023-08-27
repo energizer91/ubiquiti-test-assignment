@@ -1,0 +1,11 @@
+.root {
+    display: inline-block;
+    padding: 5px;
+    background-color: var(--web-unifi-color-neutral-02);
+    color: var(--web-unifi-color-neutral-10);
+}
+
+.root:hover {
+    background-color: white;
+    color: var(--web-unifi-color-ublue-06);
+}

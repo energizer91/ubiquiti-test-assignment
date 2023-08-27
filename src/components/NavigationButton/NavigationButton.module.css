@@ -1,0 +1,14 @@
+.root {
+    color: var(--text-text-3-light);
+    text-decoration: none;
+    padding: 4px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.08), 0 0 1px 0 rgba(0, 0, 0, 0.06);
+    display: inline-block;
+    font-size: 14px;
+}
+
+.icon {
+    padding: 0 7px;
+}

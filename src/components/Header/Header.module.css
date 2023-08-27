@@ -1,0 +1,24 @@
+.root {
+    color: var(--web-unifi-text-3);
+    background-color: var(--web-unifi-color-neutral-02);
+    padding-right: 32px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: var(--web-unifi-text-3);
+    text-decoration: none;
+}
+
+.title {
+    margin-left: var(--grid-gap);
+}
+
+.icon {
+    padding: 5px;
+}

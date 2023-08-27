@@ -1,0 +1,25 @@
+.root {
+    display: inline-block;
+    line-height: 20px;
+}
+
+.check {
+    vertical-align: text-bottom;
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border: 1px solid var(--neutral-06);
+    border-radius: 4px;
+    margin-right: 8px;
+    background-position: -1px -1px;
+
+    &:hover {
+        border-color: var(--web-unifi-color-ublue-06);
+    }
+
+    &:checked {
+        border-color: var(--web-unifi-color-ublue-06);
+        background-image: url("../../assets/Basic.svg");
+        background-color: var(--web-unifi-color-ublue-06);
+    }
+}

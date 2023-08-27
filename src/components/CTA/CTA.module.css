@@ -1,0 +1,16 @@
+.root {
+    padding: 6px 2px;
+    color: var(--web-unifi-color-ublue-06);
+    border-radius: 4px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--web-unifi-color-ublue-07);
+    }
+
+    &:focus-visible {
+        outline: 1px solid var(--web-unifi-color-ublue-06);
+    }
+}

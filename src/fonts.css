@@ -1,0 +1,62 @@
+@font-face {
+    src: url(https://assets.ecomm.ui.com/static/fonts/ui-sans-v7-light.woff2) format("woff2");
+    font-family: UI Sans;
+    font-style: normal;
+    font-weight: 300
+}
+
+@font-face {
+    src: url(https://assets.ecomm.ui.com/static/fonts/ui-sans-v7-regular.woff2) format("woff2");
+    font-family: UI Sans;
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    src: url(https://assets.ecomm.ui.com/static/fonts/ui-sans-v7-medium.woff2) format("woff2");
+    font-family: UI Sans;
+    font-style: normal;
+    font-weight: 500
+}
+
+@font-face {
+    src: url(https://assets.ecomm.ui.com/static/fonts/ui-sans-v7-bold.woff2) format("woff2");
+    font-family: UI Sans;
+    font-style: normal;
+    font-weight: 700
+}
+
+@font-face {
+    src: url(https://assets.ecomm.ui.com/static/fonts/ui-sans-v7-black.woff2) format("woff2");
+    font-family: UI Sans;
+    font-style: normal;
+    font-weight: 900
+}
+
+@font-face {
+    src: url(https://assets.ecomm.ui.com/static/fonts/lato-regular.woff2) format("woff2"),url(https://assets.ecomm.ui.com/static/fonts/lato-regular.woff) format("woff");
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    src: url(https://assets.ecomm.ui.com/static/fonts/lato-Italic.woff2) format("woff2"),url(https://assets.ecomm.ui.com/static/fonts/lato-Italic.woff) format("woff");
+    font-family: Lato;
+    font-style: italic;
+    font-weight: 400
+}
+
+@font-face {
+    src: url(https://assets.ecomm.ui.com/static/fonts/lato-bold-italic.woff2) format("woff2"),url(https://assets.ecomm.ui.com/static/fonts/lato-bold-italic.woff) format("woff");
+    font-family: Lato;
+    font-style: italic;
+    font-weight: 700
+}
+
+@font-face {
+    src: url(https://assets.ecomm.ui.com/static/fonts/lato-bold.woff2) format("woff2"),url(https://assets.ecomm.ui.com/static/fonts/lato-bold.woff) format("woff");
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 700
+}

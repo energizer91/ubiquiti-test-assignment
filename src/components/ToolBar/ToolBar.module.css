@@ -1,0 +1,16 @@
+.root {
+    padding: var(--grid-gap) 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+}
+
+.devicesCount {
+    margin-left: 16px;
+    color: var(--gray-4);
+}
