@@ -4,6 +4,10 @@ import { DevicesContext } from '../../context/devicesContext';
 import DeviceCard from '../../components/DeviceCard/DeviceCard';
 import styles from './DeviceView.module.css';
 import DeviceNavigation from '../../components/DeviceNavigation/DeviceNavigation';
+import Loading from '../../components/Loading/Loading';
+import ErrorMessage from '../../components/Error/Error';
+
+const NOT_FOUND_ERROR: Error = new Error('Device not found');
 
 export default function DeviceView() {
   const { deviceId } = useParams();
@@ -17,15 +21,15 @@ export default function DeviceView() {
   }, [deviceId, data]);
 
   if (loading) {
-    return <div>loading</div>;
+    return <Loading />;
   }
 
   if (error) {
-    return <div>{error.message}</div>;
+    return <ErrorMessage e={error} />;
   }
 
   if (!item) {
-    return <div>not found</div>;
+    return <ErrorMessage e={NOT_FOUND_ERROR} />;
   }
 
   return (

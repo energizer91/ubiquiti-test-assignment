@@ -5,6 +5,8 @@ import Table from '../../components/Table/Table';
 import Grid from '../../components/Grid/Grid';
 import styles from './MainView.module.css';
 import { DevicesContext } from '../../context/devicesContext';
+import Loading from '../../components/Loading/Loading';
+import Error from '../../components/Error/Error';
 
 export default function MainView() {
   const [filters, setFilters] = React.useState<FilterLine[]>([]);
@@ -22,11 +24,11 @@ export default function MainView() {
   }, [data, filters]);
 
   if (loading) {
-    return <div>loading</div>;
+    return <Loading />;
   }
 
   if (error) {
-    return <div>{error.message}</div>;
+    return <Error e={error} />;
   }
 
   return (

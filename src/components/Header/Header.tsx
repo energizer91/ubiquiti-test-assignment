@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className={styles.root}>
       <div className={styles.logo}>
-        <Link className={styles.icon} to="/">
+        <Link className={styles.icon} to="/" aria-label="Home">
           <Icon />
         </Link>
         <span className={styles.title}>Devices</span>

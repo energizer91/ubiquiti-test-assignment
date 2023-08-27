@@ -27,6 +27,7 @@ export default function ViewModeToggle() {
       <label
         className={`${styles.root} ${styles.table}`}
         role="button"
+        aria-label="View mode Table"
         tabIndex={0}
         onKeyUp={onChangeViewModeKeyHandler(ViewMode.TABLE)}
       >
@@ -59,6 +60,7 @@ export default function ViewModeToggle() {
       <label
         className={`${styles.root} ${styles.grid}`}
         role="button"
+        aria-label="View mode Grid"
         tabIndex={0}
         onKeyUp={onChangeViewModeKeyHandler(ViewMode.GRID)}
       >
