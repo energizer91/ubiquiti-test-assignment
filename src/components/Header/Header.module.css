@@ -12,13 +12,12 @@
     display: flex;
     align-items: center;
     color: var(--web-unifi-text-3);
-    text-decoration: none;
+}
+
+.icon {
+    display: flex;
 }
 
 .title {
     margin-left: var(--grid-gap);
-}
-
-.icon {
-    padding: 5px;
 }

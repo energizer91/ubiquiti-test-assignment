@@ -29,6 +29,7 @@ const TableRow = ({ data, index, style }: TableRowProps) => {
       onClick={openDevice(id)}
       style={Object.assign({}, style, { top: 33 + Number(style.top) })}
       className={styles.row}
+      tabIndex={index + 1}
     >
       <td className={styles.cell}>
         <Image icon={icon} size={1} alt={line.name + ' ' + product.name} className={styles.icon} />
