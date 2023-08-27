@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import ToolBar, { ViewMode } from '../../components/ToolBar/ToolBar';
-import { FilterLine, Item } from '../../types';
+import ToolBar from '../../components/ToolBar/ToolBar';
+import { FilterLine, Item, ViewMode } from '../../types';
 import Table from '../../components/Table/Table';
 import Grid from '../../components/Grid/Grid';
 import styles from './MainView.module.css';
@@ -32,7 +32,12 @@ export default function MainView() {
 
   return (
     <div className={styles.root}>
-      <ToolBar onChangeFilter={setFilters} filteredLength={filteredItems.length} onChangeViewMode={setViewMode} />
+      <ToolBar
+        onChangeFilter={setFilters}
+        filteredLength={filteredItems.length}
+        viewMode={viewMode}
+        onChangeViewMode={setViewMode}
+      />
       {viewMode === ViewMode.TABLE && <Table items={filteredItems} />}
       {viewMode === ViewMode.GRID && <Grid items={filteredItems} />}
     </div>

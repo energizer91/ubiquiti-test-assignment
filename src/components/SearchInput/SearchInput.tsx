@@ -119,13 +119,12 @@ export default function SearchInput({ data }: SearchInputProps) {
             innerElementType={Inner}
             itemCount={searchResults.length}
             itemSize={ITEM_HEIGHT}
-            itemData={searchResults}
             height={height}
             width="100%"
             className={styles.scroll}
           >
-            {({ data, index, style }: SearchItemsInnerProps) => {
-              const item = data[index];
+            {({ index, style }: SearchItemsInnerProps) => {
+              const item = searchResults[index];
               return (
                 <li
                   style={style}

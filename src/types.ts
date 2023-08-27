@@ -49,3 +49,8 @@ export interface Item {
     };
   };
 }
+
+export enum ViewMode {
+  TABLE,
+  GRID,
+}

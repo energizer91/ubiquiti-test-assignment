@@ -1,0 +1,26 @@
+.root {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    padding: 6px;
+    border-radius: 4px;
+    appearance: none;
+    color: #838691;
+
+    &:hover {
+        background-color: var(--web-unifi-color-neutral-02);
+        color: var(--web-unifi-color-ublue-06);
+    }
+
+    & input {
+        display: none;
+    }
+}
+
+.table {
+
+}
+
+.grid {
+
+}
