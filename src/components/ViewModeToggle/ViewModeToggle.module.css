@@ -2,18 +2,37 @@
     display: inline-block;
     height: 32px;
     width: 32px;
-    padding: 6px;
-    border-radius: 4px;
     appearance: none;
     color: #838691;
 
     &:hover {
-        background-color: var(--web-unifi-color-neutral-02);
-        color: var(--web-unifi-color-ublue-06);
+
+    }
+
+    &:checked {
+        background-color: red;
     }
 
     & input {
         display: none;
+    }
+
+    & input:checked + svg {
+        background-color: var(--web-unifi-color-neutral-02);
+        color: var(--web-unifi-color-ublue-06);
+    }
+
+    & svg {
+        padding: 6px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: var(--web-unifi-color-neutral-02);
+        }
+    }
+
+    &:focus-visible {
+        outline: 1px solid var(--web-unifi-color-ublue-06)
     }
 }
 

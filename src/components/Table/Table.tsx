@@ -23,13 +23,24 @@ const TableRow = ({ data, index, style }: TableRowProps) => {
     (deviceId: string) => () => navigate(`/devices/${deviceId}`),
     [],
   );
+  const openDeviceByEnter = React.useCallback(
+    (deviceId: string) => (e: React.KeyboardEvent<HTMLTableRowElement>) => {
+      if (e.code !== 'Space' && e.code !== 'Enter') {
+        return;
+      }
+
+      navigate(`/devices/${deviceId}`);
+    },
+    [],
+  );
 
   return (
     <tr
       onClick={openDevice(id)}
+      onKeyDown={openDeviceByEnter(id)}
       style={Object.assign({}, style, { top: 33 + Number(style.top) })}
       className={styles.row}
-      tabIndex={index + 1}
+      tabIndex={0}
     >
       <td className={styles.cell}>
         <Image icon={icon} size={1} alt={line.name + ' ' + product.name} className={styles.icon} />

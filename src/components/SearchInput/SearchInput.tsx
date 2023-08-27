@@ -62,7 +62,7 @@ const HighlightWord = ({ word, highlight }: HighlightWordProps) => {
 
 const Inner = React.forwardRef<HTMLUListElement, React.HTMLProps<HTMLUListElement>>(
   ({ children, ...rest }, ref) => (
-    <ul {...rest} ref={ref}>
+    <ul {...rest} ref={ref} role="listbox">
       {children}
     </ul>
   ),
@@ -95,6 +95,13 @@ export default function SearchInput({ data }: SearchInputProps) {
     );
   }, [search, data]);
   const onSelect = React.useCallback((id: string) => () => navigate(`/devices/${id}`), [navigate]);
+  const onSelectKey = React.useCallback((id: string) => (e: React.KeyboardEvent<HTMLLIElement>) => {
+    if (e.code !== 'Space' && e.code !== 'Enter') {
+      return;
+    }
+
+    navigate(`/devices/${id}`);
+  }, [navigate]);
 
   React.useEffect(() => {
     if (searchResults.length * ITEM_HEIGHT < MAX_HEIGHT) {
@@ -110,6 +117,7 @@ export default function SearchInput({ data }: SearchInputProps) {
       <input
         className={styles.input}
         type="search"
+        role="search"
         onChange={onChangeSearch}
         placeholder="Search"
       />
@@ -131,6 +139,9 @@ export default function SearchInput({ data }: SearchInputProps) {
                   key={item.id}
                   className={styles.listItem}
                   onClick={onSelect(item.id)}
+                  onKeyUp={onSelectKey(item.id)}
+                  role="option"
+                  tabIndex={0}
                 >
                   <span className={styles.listName}>
                     <HighlightWord word={item.product.name} highlight={search} />

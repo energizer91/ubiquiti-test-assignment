@@ -17,6 +17,7 @@ export const SPECS: SpecsObject = {
       },
     },
     numberOfPorts: ['Number of Ports', ''],
+    ethernetMaxSpeedMegabitsPerSecond: ['Speed', 'Mbps']
   },
 };
 

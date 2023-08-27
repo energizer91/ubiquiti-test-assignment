@@ -32,6 +32,7 @@ export default function DeviceNavigation() {
         />
         <NavigationButton
           icon={Arrow}
+          className={styles.foreButton}
           disabled={deviceIndex >= data.length - 1}
           href={getUrl(data[deviceIndex + 1]?.id)}
         />

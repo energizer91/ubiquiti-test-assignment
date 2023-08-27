@@ -42,6 +42,10 @@
         color: var(--text-text-3-light);
         font-weight: 400;
     }
+
+    &:focus, &:focus-visible {
+        outline: 1px solid var(--web-unifi-color-ublue-06);
+    }
 }
 
 .listItem {
@@ -71,6 +75,10 @@
     & strong {
         font-weight: bold;
         text-decoration: underline;
+    }
+
+    &:focus-visible {
+        outline: 1px solid var(--web-unifi-color-ublue-06);
     }
 }
 

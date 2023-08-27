@@ -11,14 +11,32 @@ export default function ViewModeToggle() {
     },
     [],
   );
+  const onChangeViewModeKeyHandler = React.useCallback(
+    (mode: ViewMode) => (e: React.KeyboardEvent<HTMLLabelElement>) => {
+      if (e.code !== 'Space' && e.code !== 'Enter') {
+        return;
+      }
+
+      setViewMode(mode);
+    },
+    [],
+  );
 
   return (
     <>
       <label
         className={`${styles.root} ${styles.table}`}
-        onChange={onChangeViewModeHandler(ViewMode.TABLE)}
+        role="button"
+        tabIndex={0}
+        onKeyUp={onChangeViewModeKeyHandler(ViewMode.TABLE)}
       >
-        <input type="radio" name="viewMode" checked={viewMode === ViewMode.TABLE} />
+        <input
+          type="radio"
+          name="viewMode"
+          id="viewmode-table"
+          checked={viewMode === ViewMode.TABLE}
+          onChange={onChangeViewModeHandler(ViewMode.TABLE)}
+        />
         <svg
           width="20"
           height="20"
@@ -40,9 +58,17 @@ export default function ViewModeToggle() {
       </label>
       <label
         className={`${styles.root} ${styles.grid}`}
-        onChange={onChangeViewModeHandler(ViewMode.GRID)}
+        role="button"
+        tabIndex={0}
+        onKeyUp={onChangeViewModeKeyHandler(ViewMode.GRID)}
       >
-        <input type="radio" name="viewMode" checked={viewMode === ViewMode.GRID} />
+        <input
+          type="radio"
+          name="viewMode"
+          id="viewmode-grid"
+          checked={viewMode === ViewMode.GRID}
+          onChange={onChangeViewModeHandler(ViewMode.GRID)}
+        />
         <svg
           width="20"
           height="20"

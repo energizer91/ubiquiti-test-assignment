@@ -25,8 +25,7 @@
     }
 
     &:focus-visible {
-        outline-color: var(--web-unifi-color-ublue-06) 0px solid;
-        outline-width: 1px;
+        outline: 1px solid var(--web-unifi-color-ublue-06);
     }
 }
 

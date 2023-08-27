@@ -5,14 +5,20 @@
     justify-content: space-between;
 }
 
-.navigation {
-
-}
-
 .backButton {
     margin-right: 4px;
 
     & img {
         transform: scaleX(-1);
+    }
+
+    &:focus-visible {
+        outline: 1px solid var(--web-unifi-color-ublue-06);
+    }
+}
+
+.foreButton {
+    &:focus-visible {
+        outline: 1px solid var(--web-unifi-color-ublue-06);
     }
 }

@@ -9,42 +9,9 @@ interface GridProps {
   items: Item[];
 }
 
-const GridElement = ({ data, rowIndex, columnIndex, style }: GridChildComponentProps<Item[][]>) => {
-  const item = data[rowIndex][columnIndex];
-  const navigate = useNavigate();
-  const openDevice = React.useCallback(
-    (deviceId: string) => () => navigate(`/devices/${deviceId}`),
-    [],
-  );
-
-  if (!item) {
-    return null;
-  }
-
-  return (
-    <div className={styles.wrapper} style={style} onClick={openDevice(item.id)}>
-      <div className={styles.element}>
-        <Image
-          className={styles.image}
-          icon={item.icon}
-          width={100}
-          height={100}
-          size={2}
-          alt={item.product.name}
-        />
-        <div className={styles.elementDescription}>
-          <h2 className={styles.elementTitle}>{item.product.name}</h2>
-          <h3 className={styles.elementShortnames}>{item.shortnames.join(', ')}</h3>
-        </div>
-        <div className={styles.elementLine}>{item.line.name}</div>
-      </div>
-    </div>
-  );
-};
-
 const Inner = React.forwardRef<HTMLTableSectionElement, React.HTMLProps<HTMLTableSectionElement>>(
   ({ children, ...rest }, ref) => (
-    <div {...rest} className={styles.inner} ref={ref}>
+    <div {...rest} className={styles.inner} ref={ref} role="grid">
       {children}
     </div>
   ),
@@ -56,6 +23,21 @@ const ELEMENT_WIDTH = 216 + 16;
 const ELEMENT_HEIGHT = 172 + 16;
 
 export default function Grid({ items }: GridProps) {
+  const navigate = useNavigate();
+  const openDevice = React.useCallback(
+    (deviceId: string) => () => navigate(`/devices/${deviceId}`),
+    [],
+  );
+  const openDeviceKey = React.useCallback(
+    (deviceId: string) => (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.code !== 'Space' && e.code !== 'Enter') {
+        return;
+      }
+
+      navigate(`/devices/${deviceId}`);
+    },
+    [],
+  );
   const ref = React.useRef<HTMLDivElement>(null);
   const [height, setHeight] = React.useState(0);
   const [width, setWidth] = React.useState(0);
@@ -79,7 +61,7 @@ export default function Grid({ items }: GridProps) {
       const rect = ref.current?.getBoundingClientRect();
 
       setHeight(rect?.height || 0);
-      setWidth(rect?.width || 0);
+      setWidth((rect?.width || 0) + 16);
     };
 
     handler();
@@ -107,7 +89,38 @@ export default function Grid({ items }: GridProps) {
         width={colCount * ELEMENT_WIDTH}
         className={styles.scroll}
       >
-        {GridElement}
+        {({ data, rowIndex, columnIndex, style }: GridChildComponentProps<Item[][]>) => {
+          const item = data[rowIndex][columnIndex];
+
+          if (!item) {
+            return null;
+          }
+
+          return (
+            <div
+              className={styles.wrapper}
+              style={style}
+              onClick={openDevice(item.id)}
+              onKeyUp={openDeviceKey(item.id)}
+            >
+              <div className={styles.element} role="presentation" tabIndex={0}>
+                <Image
+                  className={styles.image}
+                  icon={item.icon}
+                  width={100}
+                  height={100}
+                  size={2}
+                  alt={item.product.name}
+                />
+                <div className={styles.elementDescription}>
+                  <h2 className={styles.elementTitle}>{item.product.name}</h2>
+                  <h3 className={styles.elementShortnames}>{item.shortnames.join(', ')}</h3>
+                </div>
+                <div className={styles.elementLine}>{item.line.name}</div>
+              </div>
+            </div>
+          );
+        }}
       </FixedSizeGrid>
     </div>
   );

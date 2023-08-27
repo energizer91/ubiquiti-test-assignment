@@ -14,13 +14,15 @@ export default function Filter({ onChangeFilters }: FilterProps) {
   const [listOpened, setListOpened] = React.useState(false);
   const [selectedFilters, setSelectedFilters] = React.useState(filters.map(() => false));
   const onSetListOpened = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => setListOpened(e.target.checked),
-    [],
+    () => {
+      setListOpened(!listOpened);
+    },
+    [listOpened],
   );
 
   const onChangeFiltersCallback = React.useCallback(
-    (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSelectedFilters(selectedFilters.map((f, i) => (i === index ? e.target.checked : f)));
+    (index: number) => (value: boolean) => {
+      setSelectedFilters(selectedFilters.map((f, i) => (i === index ? value : f)));
     },
     [selectedFilters],
   );
@@ -42,10 +44,25 @@ export default function Filter({ onChangeFilters }: FilterProps) {
       }
     }
 
+    function modalCloseKeyHandler(this: Document, event: KeyboardEvent) {
+      if (event.code !== 'Escape') {
+        return;
+      }
+      if (!modalRef.current) {
+        return;
+      }
+
+      if (!modalRef.current.contains(event.target as Node)) {
+        setListOpened(false);
+      }
+    }
+
     document.addEventListener('click', modalCloseHandler, true);
+    document.addEventListener('keyup', modalCloseKeyHandler, true);
 
     return () => {
       document.removeEventListener('click', modalCloseHandler);
+      document.removeEventListener('keyup', modalCloseKeyHandler);
     };
   }, []);
 
