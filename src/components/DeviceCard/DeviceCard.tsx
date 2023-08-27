@@ -69,7 +69,7 @@ export default function DeviceCard({ item }: DeviceCardProps) {
       {showJSON && (
         <div className={styles.backdrop} onClick={onHideJSON} ref={modalRef}>
           <div className={styles.dialog}>
-            <pre>{JSON.stringify(item, null, 2)}</pre>
+            <pre className={styles.json}>{JSON.stringify(item, null, 2)}</pre>
           </div>
         </div>
       )}
