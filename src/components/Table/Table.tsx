@@ -56,7 +56,17 @@ export default function Table({ items }: TableProps) {
   const [height, setHeight] = React.useState(0);
 
   React.useEffect(() => {
-    setHeight(ref.current?.getBoundingClientRect().height || 0);
+    const handler = () => {
+      setHeight(ref.current?.getBoundingClientRect().height || 0);
+    };
+
+    handler();
+
+    window.addEventListener('resize', handler);
+
+    return () => {
+      window.removeEventListener('resize', handler);
+    };
   }, [ref]);
 
   if (!items.length) {
