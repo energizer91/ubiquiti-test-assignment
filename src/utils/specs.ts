@@ -12,8 +12,7 @@ export const SPECS: SpecsObject = {
   network: {
     radios: {
       na: {
-        maxPower: ['Max. Power', 'W'],
-        maxSpeedMegabitsPerSecond: ['Speed', 'Mbps']
+        maxPower: ['Max. Power', 'W']
       },
     },
     numberOfPorts: ['Number of Ports', ''],
